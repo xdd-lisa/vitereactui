@@ -1,0 +1,322 @@
+// Redux Demo 样式
+@primary-color: #646cff;
+@success-color: #52c41a;
+@warning-color: #faad14;
+@error-color: #ff4d4f;
+@info-color: #1890ff;
+
+.redux-demo {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  h2 {
+    text-align: center;
+    color: @primary-color;
+    margin-bottom: 2rem;
+  }
+
+  .demo-section {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      color: #333;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #f0f0f0;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  // 通用按钮样式
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 4px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    &.btn-primary {
+      background: @primary-color;
+      color: white;
+    }
+
+    &.btn-success {
+      background: @success-color;
+      color: white;
+    }
+
+    &.btn-warning {
+      background: @warning-color;
+      color: white;
+    }
+
+    &.btn-danger {
+      background: @error-color;
+      color: white;
+    }
+
+    &.btn-info {
+      background: @info-color;
+      color: white;
+    }
+
+    &.btn-secondary {
+      background: #6c757d;
+      color: white;
+    }
+
+    &.btn-active {
+      background: @primary-color;
+      color: white;
+    }
+
+    &.btn-outline {
+      background: white;
+      color: @primary-color;
+      border: 1px solid @primary-color;
+    }
+  }
+
+  // 表单样式
+  .form-input, .form-select {
+    padding: 8px 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    font-size: 14px;
+    margin: 4px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: @primary-color;
+      box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+    }
+  }
+
+  // 计数器部分
+  .counter-display {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+
+    .counter-value {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: @primary-color;
+      margin-bottom: 0.5rem;
+    }
+
+    .counter-step, .counter-history {
+      color: #666;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  .counter-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .counter-inputs {
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .form-input {
+        margin-right: 0.5rem;
+      }
+    }
+
+    .step-buttons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  // 用户部分
+  .user-logged-in {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f6ffed;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+
+    .user-avatar img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    .user-details {
+      flex: 1;
+
+      div {
+        margin-bottom: 0.25rem;
+        color: #333;
+      }
+    }
+  }
+
+  .user-login {
+    .login-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .error-message {
+      color: @error-color;
+      font-size: 14px;
+      padding: 0.5rem;
+      background: #fff2f0;
+      border-radius: 4px;
+    }
+  }
+
+  .user-preferences {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .preference-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      label {
+        font-weight: 500;
+        color: #333;
+      }
+    }
+  }
+
+  // 应用部分
+  .app-controls {
+    margin-bottom: 1.5rem;
+
+    .notification-buttons {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  .notifications {
+    h4 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .notification {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+      border-left: 4px solid;
+
+      &.notification-success {
+        background: #f6ffed;
+        border-left-color: @success-color;
+      }
+
+      &.notification-error {
+        background: #fff2f0;
+        border-left-color: @error-color;
+      }
+
+      &.notification-warning {
+        background: #fffbe6;
+        border-left-color: @warning-color;
+      }
+
+      &.notification-info {
+        background: #e6f7ff;
+        border-left-color: @info-color;
+      }
+
+      .notification-content {
+        flex: 1;
+
+        .notification-title {
+          font-weight: 600;
+          margin-bottom: 0.25rem;
+        }
+
+        .notification-message {
+          color: #666;
+          font-size: 14px;
+        }
+      }
+
+      .notification-close {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+
+        &:hover {
+          color: #333;
+        }
+      }
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .redux-demo {
+    padding: 1rem;
+
+    .counter-controls,
+    .notification-buttons,
+    .user-preferences {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .user-logged-in {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .login-form {
+      flex-direction: column;
+    }
+  }
+}

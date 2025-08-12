@@ -1,0 +1,154 @@
+// Contact页面样式
+@primary-color: #646cff;
+@border-color: #d9d9d9;
+@hover-border-color: @primary-color;
+@error-color: #ff4d4f;
+@success-color: #52c41a;
+
+.contact-page {
+  padding: 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  
+  .title {
+    font-size: 2.5em;
+    margin-bottom: 1rem;
+    color: @primary-color;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(45deg, @primary-color, #61dafb);
+      border-radius: 2px;
+    }
+  }
+  
+  .contact-info {
+    margin: 2rem 0;
+    
+    .section-title {
+      font-size: 1.5em;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      
+      .contact-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        min-width: 300px;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-icon {
+          font-size: 1.2em;
+          margin-right: 1rem;
+          color: @primary-color;
+        }
+        
+        .contact-text {
+          font-size: 1.1em;
+          color: #333;
+        }
+      }
+    }
+  }
+  
+  .contact-form {
+    margin-top: 2rem;
+    
+    .form-title {
+      font-size: 1.5em;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    .form-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      
+      .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+        
+        .form-input {
+          width: 100%;
+          padding: 12px 16px;
+          border: 2px solid @border-color;
+          border-radius: 6px;
+          font-size: 16px;
+          transition: all 0.3s ease;
+          box-sizing: border-box;
+          
+          &:focus {
+            outline: none;
+            border-color: @hover-border-color;
+            box-shadow: 0 0 0 3px fade(@primary-color, 20%);
+          }
+          
+          &::placeholder {
+            color: #bfbfbf;
+          }
+        }
+        
+        .form-textarea {
+          resize: vertical;
+          min-height: 100px;
+          font-family: inherit;
+        }
+      }
+      
+      .submit-button {
+        background: @primary-color;
+        color: white;
+        border: none;
+        padding: 12px 32px;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        
+        &:hover {
+          background: darken(@primary-color, 10%);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px fade(@primary-color, 30%);
+        }
+        
+        &:active {
+          transform: translateY(0);
+        }
+        
+        &:disabled {
+          background: #d9d9d9;
+          cursor: not-allowed;
+          transform: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

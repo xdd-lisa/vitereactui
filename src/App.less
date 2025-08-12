@@ -1,0 +1,63 @@
+// Less变量定义
+@primary-color: #646cff;
+@react-color: #61dafb;
+@text-muted: #888;
+@max-width: 1280px;
+@padding-base: 2rem;
+@logo-size: 6em;
+@transition-duration: 300ms;
+
+// 混合函数
+.drop-shadow(@color) {
+  filter: drop-shadow(0 0 2em @color);
+}
+
+.transition(@property: all, @duration: @transition-duration) {
+  transition: @property @duration;
+}
+
+// 样式定义
+// #root {
+//   max-width: @max-width;
+//   margin: 0 auto;
+//   padding: @padding-base;
+//   text-align: center;
+// }
+
+.logo {
+  height: @logo-size;
+  padding: 1.5em;
+  will-change: filter;
+  .transition(filter);
+  
+  &:hover {
+    .drop-shadow(fade(@primary-color, 67%));
+  }
+  
+  &.react:hover {
+    .drop-shadow(fade(@react-color, 67%));
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: @text-muted;
+}

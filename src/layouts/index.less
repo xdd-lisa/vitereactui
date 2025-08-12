@@ -1,0 +1,184 @@
+// Less变量定义
+@layout-header-bg: white;
+@layout-footer-bg: #f5f5f5;
+@border-color: #e8e8e8;
+@text-color: #666;
+@shadow-color: rgba(0, 0, 0, 0.1);
+@content-max-width: 1200px;
+@padding-lg: 20px;
+@padding-md: 15px;
+@mobile-breakpoint: 768px;
+@primary-color: #646cff;
+@nav-bg: #fafafa;
+@nav-border: #e8e8e8;
+@nav-text: #333;
+@nav-text-hover: @primary-color;
+@nav-active-bg: fade(@primary-color, 10%);
+@nav-height: 64px;
+
+// 混合函数
+.flex-layout(@direction: column) {
+  display: flex;
+  flex-direction: @direction;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.shadow(@x: 0, @y: 2px, @blur: 8px, @color: @shadow-color) {
+  box-shadow: @x @y @blur @color;
+}
+
+.transition(@property: all, @duration: 0.3s) {
+  transition: @property @duration ease;
+}
+
+// 基础布局样式
+.basic-layout {
+  height: calc(100vh - @padding-lg*2);
+  .flex-layout(row);
+  padding: @padding-lg;
+
+  &-header {
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: @layout-header-bg;
+    border: 1px solid red;
+  }
+
+  &-content {
+    flex: 1;
+    padding: @padding-lg;
+    max-width: @content-max-width;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    min-height: calc(100vh - 120px); // 减去header和footer的高度
+  }
+
+  &-footer {
+    flex-shrink: 0;
+    background: @layout-footer-bg;
+    text-align: center;
+    padding: @padding-lg;
+    border-top: 1px solid @border-color;
+    color: @text-color;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: @mobile-breakpoint) {
+  .basic-layout {
+    &-content {
+      padding: @padding-md;
+    }
+    
+    &-footer {
+      padding: @padding-md;
+    }
+  }
+}
+
+.navigation {
+  background: @nav-bg;
+  height: 100%;
+
+  &-container {
+    .flex-layout(column);
+    .flex-center();
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: @nav-height;
+  }
+
+  &-menu {
+    .flex-center();
+    .flex-layout(column);
+    gap: 8px;
+  }
+
+  &-item {
+    .flex-center();
+    text-decoration: none;
+    color: @nav-text;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    .transition();
+    position: relative;
+
+    &:hover {
+      color: @nav-text-hover;
+      background: fade(@primary-color, 5%);
+      transform: translateY(-1px);
+    }
+
+    &.active {
+      color: @primary-color;
+      background: @nav-active-bg;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 2px;
+        background: @primary-color;
+        border-radius: 1px;
+      }
+    }
+
+    .nav-icon {
+      font-size: 16px;
+      margin-right: 6px;
+    }
+
+    .nav-text {
+      font-size: 14px;
+      white-space: nowrap;
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .navigation {
+    &-container {
+      padding: 0 16px;
+    }
+
+    &-item {
+      padding: 8px 12px;
+
+      .nav-text {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation {
+    &-menu {
+      gap: 4px;
+    }
+
+    &-item {
+      padding: 6px 8px;
+    }
+  }
+}
