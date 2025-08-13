@@ -8,7 +8,7 @@
  */
 import { useState, type FC } from 'react'
 import reactLogo from '@/assets/react.svg'
-import viteLogo from '/public/vite.svg'
+import viteLogo from '/vite.svg?url'
 import './index.less'
 
 const Home: FC = () => {

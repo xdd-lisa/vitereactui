@@ -2,13 +2,13 @@
  * @Author: xudandan xudandan@lattebank.com
  * @Date: 2025-08-11 15:00:00
  * @LastEditors: xudandan xudandan@lattebank.com
- * @LastEditTime: 2025-08-12 15:22:27
+ * @LastEditTime: 2025-08-13 17:04:28
  * @FilePath: /my-react-vite-ts/src/types/routes.ts
  * @Description: 路由相关类型定义
  */
 
 // 路由路径枚举
-export type RoutePathsEnum = '/' | '/about' | '/contact'
+export type RoutePathsEnum = '/' | '/about' | '/contact' | '/label'
 
 export const RoutePaths = {
   HOME: '/',
