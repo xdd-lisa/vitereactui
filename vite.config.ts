@@ -1,11 +1,3 @@
-/*
- * @Author: xudandan xudandan@lattebank.com
- * @Date: 2025-08-11 14:18:25
- * @LastEditors: xudandan xudandan@lattebank.com
- * @LastEditTime: 2025-08-11 14:43:09
- * @FilePath: /my-react-vite-ts/vite.config.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react';
 import { name} from './package.json';
@@ -15,8 +7,35 @@ import path from 'path';
 export default defineConfig({
   plugins: [react()],
   base: `/${name}/`,
+  // 定义全局常量
+  define: {
+    APP_VERSION: JSON.stringify(process.env.npm_package_version || '1.0.0'),
+    BUILD_TIME: JSON.stringify(new Date().toISOString()),
+    IS_DEV: JSON.stringify(process.env.NODE_ENV === 'development'),
+  },
   server: {
     port: 9000,
+    // 代理配置
+    proxy: {
+      // // 代理所有 /api 开头的请求
+      // '/api': {
+      //   target: 'http://localhost:3000', // 后端服务地址
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api/, ''), // 重写路径，去掉 /api 前缀
+      // },
+      // // 代理特定路径
+      // '/upload': {
+      //   target: 'http://localhost:8080',
+      //   changeOrigin: true,
+      // },
+      // // 代理到外部API
+      // '/external-api': {
+      //   target: 'https://api.example.com',
+      //   changeOrigin: true,
+      //   secure: true, // 如果是 https 目标，设置为 true
+      //   rewrite: (path) => path.replace(/^\/external-api/, '/v1'),
+      // },
+    },
   },
   resolve: {
     alias: {
